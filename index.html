@@ -2,741 +2,221 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Assignment #4: Forms and Validation</title>
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            color: #212529;
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
-        .hero-banner {
-            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
-            color: #ffffff;
-            padding: 2.5rem 1rem;
-            margin-bottom: 2rem;
-            border-radius: 0 0 1rem 1rem;
-            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
-        }
-
-        .part-card {
-            border: none;
-            border-radius: 0.75rem;
-            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
-            background-color: #ffffff;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        /* Native HTML Form Styling for Part 1 */
-        .native-form-box {
-            background-color: #fdfdfd;
-            border: 1px solid #ced4da;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-        }
-
-        .native-form-box label {
-            display: inline-block;
-            font-weight: 600;
-            margin-bottom: 0.35rem;
-        }
-
-        .native-form-box input[type="text"],
-        .native-form-box input[type="email"],
-        .native-form-box textarea {
-            width: 100%;
-            padding: 0.45rem 0.65rem;
-            border: 1px solid #767676;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            box-sizing: border-box;
-        }
-
-        .native-form-box textarea {
-            resize: vertical;
-        }
-
-        .native-form-box button {
-            background-color: #212529;
-            color: #ffffff;
-            border: none;
-            padding: 0.5rem 1.25rem;
-            font-size: 0.95rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .native-form-box button:hover {
-            background-color: #343a40;
-        }
-
-        .badge-task {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .nav-pills .nav-link {
-            font-weight: 500;
-            border-radius: 0.5rem;
-            color: #495057;
-            padding: 0.65rem 1.25rem;
-        }
-
-        .nav-pills .nav-link.active {
-            background-color: #0d6efd;
-            box-shadow: 0 2px 6px rgba(13, 110, 253, 0.3);
-        }
-
-        /* Single Page view mode support */
-        .single-page-mode .tab-pane {
-            display: block !important;
-            opacity: 1 !important;
-            margin-bottom: 2.5rem;
-        }
-
-        .single-page-mode #assignmentTabs {
-            display: none !important;
-        }
-
-        .instruction-callout {
-            border-left: 4px solid #0d6efd;
-            background-color: #e7f1ff;
-            padding: 0.75rem 1rem;
-            border-radius: 0 0.5rem 0.5rem 0;
-            font-size: 0.9rem;
-        }
-    </style>
 </head>
 <body>
 
-    <!-- Header / Hero Section -->
-    <header class="hero-banner">
-        <div class="container text-center">
-            <span class="badge bg-light text-primary badge-task mb-2">Web Technologies • Assignment #4</span>
-            <h1 class="display-6 fw-bold mb-2">Forms and Validation</h1>
-            <p class="lead mb-0 fs-6 opacity-75">
-                HTML5 Form Attributes • Bootstrap 5 Form Components • Interactive Client-Side Validation
-            </p>
-        </div>
-    </header>
+    <div class="container mt-4">
 
-    <!-- Main Content Container -->
-    <main class="container my-4" style="max-width: 960px;">
+        <h1>1. Basic HTML form</h1>
 
-        <!-- View Controls & Tabs Navigation -->
-        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
-            <ul class="nav nav-pills flex-grow-1" id="assignmentTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="tab-part1" data-bs-toggle="pill" data-bs-target="#pane-part1" type="button" role="tab" aria-controls="pane-part1" aria-selected="true">
-                        📋 Part 1: Basic HTML Forms
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-part2" data-bs-toggle="pill" data-bs-target="#pane-part2" type="button" role="tab" aria-controls="pane-part2" aria-selected="false">
-                        🎨 Part 2: Bootstrap Forms
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-part3" data-bs-toggle="pill" data-bs-target="#pane-part3" type="button" role="tab" aria-controls="pane-part3" aria-selected="false">
-                        🚀 Part 3: Advanced Registration
-                    </button>
-                </li>
-            </ul>
+        <form id="form1">
+            <label for="name1">Name:</label>
+            <input type="text" id="name1" maxlength="50" required>
 
-            <!-- View Mode Switcher Button -->
-            <button id="viewModeToggle" class="btn btn-outline-secondary btn-sm" type="button" title="Toggle between tabbed navigation and all forms on one page">
-                📜 Toggle View: <span id="viewModeLabel">Show All on One Page</span>
-            </button>
-        </div>
+            <br><br>
 
-        <div class="tab-content" id="assignmentTabsContent">
+            <label for="email1">Email:</label>
+            <input type="email" id="email1" required>
 
-            <!-- ================================================================= -->
-            <!-- PART 1: BASIC HTML FORMS (Task 0 & Task 1) -->
-            <!-- ================================================================= -->
-            <section class="tab-pane show active" id="pane-part1" role="tabpanel" aria-labelledby="tab-part1" tabindex="0">
-                <div class="card part-card p-4 p-md-5">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div>
-                            <span class="badge bg-secondary badge-task">Part 1</span>
-                            <span class="badge bg-info text-dark badge-task ms-1">Tasks 0 & 1</span>
-                        </div>
-                        <small class="text-muted">Built-in HTML5 Validation</small>
-                    </div>
+            <br><br>
 
-                    <h2 class="h3 fw-bold mb-2">Part 1. Basic HTML Forms</h2>
-                    <p class="text-secondary mb-3">
-                        This section demonstrates semantic HTML structure with proper <code>&lt;label&gt;</code> elements associated with inputs using <code>for</code> attributes, and native HTML5 validation constraints (<code>required</code>, <code>type="email"</code>, <code>maxlength</code>).
-                    </p>
+            <label for="message1">Message:</label>
+            <textarea id="message1" maxlength="500" required></textarea>
 
-                    <div class="instruction-callout mb-4">
-                        <strong>💡 How to test:</strong> Click <em>"Submit Form"</em> with empty fields or an invalid email format (e.g., <code>test@</code>). Notice that your browser automatically triggers its built-in native tooltip validation message without any JavaScript!
-                    </div>
+            <br><br>
 
-                    <!-- Task 0 & 1 Form: Native HTML (no novalidate attribute) -->
-                    <div class="native-form-box">
-                        <h3 class="h5 fw-bold mb-3">Contact Form (Native HTML5)</h3>
+            <button type="submit">Submit</button>
+        </form>
 
-                        <form id="basic-form">
-                            <!-- Name Field -->
-                            <div class="mb-3">
-                                <label for="basic-name">Name:</label>
-                                <input type="text" id="basic-name" name="name" maxlength="50" required placeholder="Enter your full name">
-                            </div>
+        <br><hr><br>
 
-                            <!-- Email Field -->
-                            <div class="mb-3">
-                                <label for="basic-email">Email:</label>
-                                <input type="email" id="basic-email" name="email" required placeholder="name@example.com">
-                            </div>
+        <h1>2. Bootstrap contact form</h1>
 
-                            <!-- Message Field -->
-                            <div class="mb-3">
-                                <label for="basic-message">Message:</label>
-                                <textarea id="basic-message" name="message" maxlength="500" required rows="4" placeholder="Enter your message here..."></textarea>
-                            </div>
+        <form class="row g-3" id="form2" novalidate>
 
-                            <!-- Submit and Reset Buttons -->
-                            <div>
-                                <button type="submit">Submit Form</button>
-                                <button type="reset" style="background-color: #6c757d; margin-left: 0.5rem;" onclick="document.getElementById('basic-success-alert').classList.add('d-none');">Reset</button>
-                            </div>
-                        </form>
+            <div class="col-md-6">
+                <label for="name2" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name2" placeholder="Enter your name" required>
+                <div class="valid-feedback">okay get it</div>
+                <div class="invalid-feedback">Name is required.</div>
+            </div>
 
-                        <!-- Success Alert for Native Form -->
-                        <div id="basic-success-alert" class="alert alert-success alert-dismissible fade show mt-3 d-none" role="alert">
-                            <strong>Success!</strong> Native HTML5 validation passed and the form was submitted.
-                            <button type="button" class="btn-close" aria-label="Close" onclick="document.getElementById('basic-success-alert').classList.add('d-none')"></button>
-                        </div>
-                    </div>
+            <div class="col-md-6">
+                <label for="email2" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email2" placeholder="Enter your email" required>
+                <div class="form-text">We will reply to this email.</div>
+                <div class="valid-feedback">okay get it</div>
+                <div class="invalid-feedback">Enter a valid email.</div>
+            </div>
 
-                    <!-- Next Tab Navigation Footer -->
-                    <div class="d-flex justify-content-end mt-4 pt-3 border-top">
-                        <button class="btn btn-outline-primary btn-sm" onclick="switchTab('tab-part2')">
-                            Proceed to Part 2: Bootstrap Forms &rarr;
-                        </button>
-                    </div>
+            <div>
+                <label for="message2" class="form-label">Message:</label>
+                <textarea class="form-control" id="message2" placeholder="Enter your message" required></textarea>
+                <div class="valid-feedback">okay get it</div>
+                <div class="invalid-feedback">Message is required.</div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+
+        </form>
+
+        <br><hr><br>
+
+        <h1>3. Registration form</h1>
+
+        <form class="row g-3 mb-5" id="form3" novalidate>
+
+            <div class="col-md-6">
+                <label for="first" class="form-label">First Name:</label>
+                <input type="text" class="form-control" id="first" required>
+                <div class="valid-feedback">okay get it</div>
+                <div class="invalid-feedback">First name is required.</div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="last" class="form-label">Last Name:</label>
+                <input type="text" class="form-control" id="last" required>
+                <div class="valid-feedback">okay get it</div>
+                <div class="invalid-feedback">Last name is required.</div>
+            </div>
+
+            <div>
+                <label for="email3" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email3" required>
+                <div class="valid-feedback">okay get it</div>
+                <div class="invalid-feedback">Enter a valid email.</div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password" minlength="8" required>
+                <div class="valid-feedback">okay get it</div>
+                <div class="invalid-feedback">Use at least 8 characters.</div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="confirm" class="form-label">Confirm Password:</label>
+                <input type="password" class="form-control" id="confirm" minlength="8" required>
+                <div class="valid-feedback">okay get it</div>
+                <div class="invalid-feedback">Passwords must match and have at least 8 characters</div>
+            </div>
+
+            <fieldset class="col-md-6">
+                <legend class="form-label">Gender:</legend>
+
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="male" name="gender" required>
+                    <label for="male" class="form-check-label">Male</label>
                 </div>
-            </section>
 
-
-            <!-- ================================================================= -->
-            <!-- PART 2: BOOTSTRAP FORMS (Task 2 & Task 3) -->
-            <!-- ================================================================= -->
-            <section class="tab-pane" id="pane-part2" role="tabpanel" aria-labelledby="tab-part2" tabindex="0">
-                <div class="card part-card p-4 p-md-5">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div>
-                            <span class="badge bg-primary badge-task">Part 2</span>
-                            <span class="badge bg-info text-dark badge-task ms-1">Tasks 2 & 3</span>
-                        </div>
-                        <small class="text-muted">Bootstrap Form & Validation Classes</small>
-                    </div>
-
-                    <h2 class="h3 fw-bold mb-2">Part 2. Bootstrap Forms & Validation</h2>
-                    <p class="text-secondary mb-3">
-                        The contact form recreated with Bootstrap 5 components: Grid layout (<code>row g-3</code>, <code>col-md-6</code>), styling classes (<code>form-control</code>, <code>form-label</code>, <code>form-text</code>), and dynamic validation feedback classes (<code>is-valid</code>, <code>is-invalid</code>).
-                    </p>
-
-                    <div class="instruction-callout mb-4">
-                        <strong>💡 How to test:</strong> Click <em>"Submit"</em> while fields are empty to inspect Bootstrap's red error indicators and messages. Then enter valid inputs to see the green checkmarks and <em>"Looks good!"</em> messages. Click <em>"Reset"</em> to clear inputs and feedback classes.
-                    </div>
-
-                    <!-- Task 2 & 3 Form: Bootstrap Grid & Classes -->
-                    <form class="row g-3" id="bootstrap-contact-form" novalidate>
-                        <!-- Name Field -->
-                        <div class="col-md-6">
-                            <label for="contact-name" class="form-label fw-semibold">Name:</label>
-                            <input type="text" class="form-control" id="contact-name" placeholder="Enter your name" required>
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">Name is required.</div>
-                        </div>
-
-                        <!-- Email Field -->
-                        <div class="col-md-6">
-                            <label for="contact-email" class="form-label fw-semibold">Email:</label>
-                            <input type="email" class="form-control" id="contact-email" placeholder="Enter your email" required>
-                            <div class="form-text">We will reply to this email within 24 hours.</div>
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">Enter a valid email address.</div>
-                        </div>
-
-                        <!-- Message Field -->
-                        <div class="col-12">
-                            <label for="contact-message" class="form-label fw-semibold">Message:</label>
-                            <textarea class="form-control" id="contact-message" rows="4" placeholder="Enter your message" required></textarea>
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">Message is required.</div>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary px-4">Submit</button>
-                            <button type="reset" class="btn btn-outline-secondary px-4 ms-2">Reset</button>
-                        </div>
-                    </form>
-
-                    <!-- Success Alert for Bootstrap Contact Form -->
-                    <div id="contact-success-alert" class="alert alert-success alert-dismissible fade show mt-4 d-none" role="alert">
-                        <strong>Thank you!</strong> Your message has been validated and submitted successfully.
-                        <button type="button" class="btn-close" aria-label="Close" onclick="document.getElementById('contact-success-alert').classList.add('d-none')"></button>
-                    </div>
-
-                    <!-- Tab Navigation Footer -->
-                    <div class="d-flex justify-content-between mt-4 pt-3 border-top">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="switchTab('tab-part1')">
-                            &larr; Back to Part 1
-                        </button>
-                        <button class="btn btn-outline-primary btn-sm" onclick="switchTab('tab-part3')">
-                            Proceed to Part 3: Advanced Registration &rarr;
-                        </button>
-                    </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="female" name="gender" required>
+                    <label for="female" class="form-check-label">Female</label>
                 </div>
-            </section>
 
-
-            <!-- ================================================================= -->
-            <!-- PART 3: ADVANCED FORM PROJECT (Task 4 - Registration Form) -->
-            <!-- ================================================================= -->
-            <section class="tab-pane" id="pane-part3" role="tabpanel" aria-labelledby="tab-part3" tabindex="0">
-                <div class="card part-card p-4 p-md-5">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div>
-                            <span class="badge bg-success badge-task">Part 3</span>
-                            <span class="badge bg-warning text-dark badge-task ms-1">Task 4</span>
-                        </div>
-                        <small class="text-muted">Responsive Registration Form</small>
-                    </div>
-
-                    <h2 class="h3 fw-bold mb-2">Part 3. Advanced Registration Form</h2>
-                    <p class="text-secondary mb-3">
-                        A responsive registration form built with the Bootstrap Grid system. Includes comprehensive HTML5 constraint validation, custom JavaScript password confirmation matching via <code>setCustomValidity()</code>, radio buttons, checkboxes, dropdown select, and full reset handling.
-                    </p>
-
-                    <div class="instruction-callout mb-4">
-                        <strong>💡 How to test:</strong>
-                        <ul class="mb-0 ps-3">
-                            <li>Try submitting empty fields to trigger all required validation errors.</li>
-                            <li>Type passwords that do not match to test the custom password match validator.</li>
-                            <li>Enter a password shorter than 8 characters to trigger the HTML5 <code>minlength</code> constraint.</li>
-                            <li>Select your gender, hobbies, and country, then click <em>"Submit"</em>.</li>
-                            <li>Click <em>"Reset"</em> to wipe inputs and instantly clear all validation feedback styles.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Task 4 Registration Form -->
-                    <form class="row g-3" id="registration-form" novalidate>
-
-                        <!-- First Name -->
-                        <div class="col-md-6">
-                            <label for="first" class="form-label fw-semibold">First Name:</label>
-                            <input type="text" class="form-control" id="first" placeholder="e.g. Alan" required>
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">First name is required.</div>
-                        </div>
-
-                        <!-- Last Name -->
-                        <div class="col-md-6">
-                            <label for="last" class="form-label fw-semibold">Last Name:</label>
-                            <input type="text" class="form-control" id="last" placeholder="e.g. Turing" required>
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">Last name is required.</div>
-                        </div>
-
-                        <!-- Email -->
-                        <div class="col-12">
-                            <label for="reg-email" class="form-label fw-semibold">Email:</label>
-                            <input type="email" class="form-control" id="reg-email" placeholder="name@example.com" required>
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">Enter a valid email address.</div>
-                        </div>
-
-                        <!-- Password -->
-                        <div class="col-md-6">
-                            <label for="password" class="form-label fw-semibold">Password:</label>
-                            <input type="password" class="form-control" id="password" minlength="8" placeholder="At least 8 characters" required>
-                            <div class="form-text">Must be at least 8 characters long.</div>
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">Use at least 8 characters.</div>
-                        </div>
-
-                        <!-- Confirm Password -->
-                        <div class="col-md-6">
-                            <label for="confirm" class="form-label fw-semibold">Confirm Password:</label>
-                            <input type="password" class="form-control" id="confirm" minlength="8" placeholder="Repeat your password" required>
-                            <div class="valid-feedback">Passwords match!</div>
-                            <div class="invalid-feedback" id="confirm-feedback">Passwords must match and have at least 8 characters.</div>
-                        </div>
-
-                        <!-- Gender (Radio buttons within fieldset) -->
-                        <fieldset class="col-md-6">
-                            <legend class="form-label fw-semibold fs-6 mb-2">Gender:</legend>
-
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" id="male" name="gender" required>
-                                <label for="male" class="form-check-label">👨 Male</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" id="female" name="gender" required>
-                                <label for="female" class="form-check-label">👩 Female</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" id="nonbinary" name="gender" required>
-                                <label for="nonbinary" class="form-check-label">⚧️ Non-binary</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="radio" class="form-check-input" id="other-gender" name="gender" required>
-                                <label for="other-gender" class="form-check-label">🌈 Other / Prefer not to say</label>
-                                <div class="valid-feedback">Looks good!</div>
-                                <div class="invalid-feedback">Choose a gender.</div>
-                            </div>
-                        </fieldset>
-
-                        <!-- Hobbies (Checkboxes within fieldset) -->
-                        <fieldset class="col-md-6">
-                            <legend class="form-label fw-semibold fs-6 mb-2">Hobbies:</legend>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="coding" name="hobbies">
-                                <label for="coding" class="form-check-label">💻 Coding & Development</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="gaming" name="hobbies">
-                                <label for="gaming" class="form-check-label">🎮 Gaming</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="reading" name="hobbies">
-                                <label for="reading" class="form-check-label">📚 Reading & Books</label>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="sports" name="hobbies">
-                                <label for="sports" class="form-check-label">⚽ Sports & Fitness</label>
-                            </div>
-                        </fieldset>
-
-                        <!-- Country Select Dropdown -->
-                        <div class="col-12">
-                            <label for="country" class="form-label fw-semibold">Country:</label>
-                            <select class="form-select" id="country" required>
-                                <option value="">Select country</option>
-                                <option value="KZ">🇰🇿 Kazakhstan</option>
-                                <option value="US">🇺🇸 United States</option>
-                                <option value="UK">🇬🇧 United Kingdom</option>
-                                <option value="DE">🇩🇪 Germany</option>
-                                <option value="KR">🇰🇷 South Korea</option>
-                                <option value="JP">🇯🇵 Japan</option>
-                                <option value="TR">🇹🇷 Turkey</option>
-                            </select>
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">Choose a country.</div>
-                        </div>
-
-                        <!-- Form Action Buttons -->
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-primary px-4 fw-semibold">Submit</button>
-                            <button type="reset" class="btn btn-secondary px-4 ms-2 fw-semibold">Reset</button>
-                        </div>
-                    </form>
-
-                    <!-- Success Alert for Registration Form -->
-                    <div id="reg-success-alert" class="alert alert-success alert-dismissible fade show mt-4 d-none" role="alert">
-                        <h4 class="alert-heading h5 mb-1">🎉 Registration Successful!</h4>
-                        <p class="mb-0">All fields were validated with flying colors. Form is ready for submission.</p>
-                        <button type="button" class="btn-close" aria-label="Close" onclick="document.getElementById('reg-success-alert').classList.add('d-none')"></button>
-                    </div>
-
-                    <!-- Tab Navigation Footer -->
-                    <div class="d-flex justify-content-start mt-4 pt-3 border-top">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="switchTab('tab-part2')">
-                            &larr; Back to Part 2: Bootstrap Forms
-                        </button>
-                    </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="other" name="gender" required>
+                    <label for="other" class="form-check-label">Other</label>
+                    <div class="valid-feedback">okay get it</div>
+                    <div class="invalid-feedback">Choose a gender.</div>
                 </div>
-            </section>
+            </fieldset>
 
-        </div>
+            <fieldset class="col-md-6">
+                <legend class="form-label">Hobbies:</legend>
 
-    </main>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="reading">
+                    <label for="reading" class="form-check-label">Reading</label>
+                </div>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 text-muted border-top mt-5 bg-white">
-        <div class="container">
-            <small>Web Technologies • Assignment #4: Forms & Validation • Built with HTML5 & Bootstrap 5</small>
-        </div>
-    </footer>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="sports">
+                    <label for="sports" class="form-check-label">Sports</label>
+                </div>
 
-    <!-- Bootstrap 5 Bundle JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="music">
+                    <label for="music" class="form-check-label">Music</label>
+                </div>
 
-    <!-- Custom Validation Scripts -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="gaming">
+                    <label for="gaming" class="form-check-label">Gaming</label>
+                </div>
+            </fieldset>
+
+            <div>
+                <label for="country" class="form-label">Country:</label>
+                <select class="form-select" id="country" required>
+                    <option value="">Select country</option>
+                    <option>Kazakhstan</option>
+                    <option>USA</option>
+                    <option>China</option>
+                    <option>Mongolia</option>
+                </select>
+                <div class="valid-feedback">okay get it</div>
+                <div class="invalid-feedback">Choose a country.</div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+
+        </form>
+
+    </div>
+
     <script>
-        // ====================================================================
-        // TAB HELPER, VIEW SWITCHER & HASH ROUTING
-        // ====================================================================
-        function switchTab(tabButtonId) {
-            const triggerEl = document.getElementById(tabButtonId);
-            if (triggerEl) {
-                const tab = new bootstrap.Tab(triggerEl);
-                tab.show();
-                const hash = tabButtonId === 'tab-part1' ? '#part1' : tabButtonId === 'tab-part2' ? '#part2' : '#part3';
-                history.replaceState(null, null, hash);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        const viewModeToggle = document.getElementById("viewModeToggle");
-        const viewModeLabel = document.getElementById("viewModeLabel");
-        const tabsContent = document.getElementById("assignmentTabsContent");
-        let isSinglePageMode = false;
-
-        function setSinglePageMode(enable) {
-            isSinglePageMode = enable;
-            if (isSinglePageMode) {
-                tabsContent.classList.add("single-page-mode");
-                viewModeLabel.textContent = "Switch to Tabbed View";
-                viewModeToggle.classList.replace("btn-outline-secondary", "btn-secondary");
-                history.replaceState(null, null, "#all");
-            } else {
-                tabsContent.classList.remove("single-page-mode");
-                viewModeLabel.textContent = "Show All on One Page";
-                viewModeToggle.classList.replace("btn-secondary", "btn-outline-secondary");
-                history.replaceState(null, null, "#part1");
-            }
-        }
-
-        viewModeToggle.addEventListener("click", function() {
-            setSinglePageMode(!isSinglePageMode);
-        });
-
-        // Initialize based on URL hash (e.g., #part1, #part2, #part3, #all)
-        window.addEventListener("DOMContentLoaded", function() {
-            const hash = window.location.hash.toLowerCase();
-            if (hash === "#all") {
-                setSinglePageMode(true);
-            } else if (hash === "#part2") {
-                switchTab("tab-part2");
-            } else if (hash === "#part3") {
-                switchTab("tab-part3");
-            } else {
-                switchTab("tab-part1");
-            }
-        });
-
-        // Update hash when tabs are clicked
-        document.querySelectorAll('#assignmentTabs button[data-bs-toggle="pill"]').forEach(btn => {
-            btn.addEventListener('shown.bs.tab', (e) => {
-                const targetId = e.target.id;
-                const hash = targetId === 'tab-part1' ? '#part1' : targetId === 'tab-part2' ? '#part2' : '#part3';
-                history.replaceState(null, null, hash);
-            });
-        });
-
-
-        // ====================================================================
-        // PART 1: BASIC HTML FORM (Task 0 & 1)
-        // ====================================================================
-        const basicForm = document.getElementById("basic-form");
-        const basicSuccessAlert = document.getElementById("basic-success-alert");
-
-        basicForm.addEventListener("submit", function(event) {
-            // HTML5 built-in validation runs natively before this listener fires!
-            // When checkValidity() passes, we prevent default page reload to display feedback
-            event.preventDefault();
-            basicSuccessAlert.classList.remove("d-none");
-            basicSuccessAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-
-
-        // ====================================================================
-        // PART 2: BOOTSTRAP CONTACT FORM (Task 2 & 3)
-        // ====================================================================
-        const contactForm = document.getElementById("bootstrap-contact-form");
-        const contactSuccessAlert = document.getElementById("contact-success-alert");
-
-        contactForm.addEventListener("submit", function(event) {
+        const form2 = document.querySelector("#form2");
+        form2.addEventListener("submit", function(event) {
             event.preventDefault();
 
-            // Toggle Bootstrap validation classes for all text/textarea inputs
             this.querySelectorAll("input, textarea").forEach(field => {
                 const valid = field.checkValidity();
                 field.classList.toggle("is-valid", valid);
                 field.classList.toggle("is-invalid", !valid);
             });
-
-            if (this.checkValidity()) {
-                contactSuccessAlert.classList.remove("d-none");
-                contactSuccessAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            } else {
-                contactSuccessAlert.classList.add("d-none");
-            }
         });
 
-        // Live validation on contact inputs after initial interaction
-        contactForm.querySelectorAll("input, textarea").forEach(field => {
-            field.addEventListener("input", function() {
-                if (this.classList.contains("is-valid") || this.classList.contains("is-invalid")) {
-                    const valid = this.checkValidity();
-                    this.classList.toggle("is-valid", valid);
-                    this.classList.toggle("is-invalid", !valid);
-                }
-            });
-        });
-
-        contactForm.addEventListener("reset", function() {
-            // Remove validation classes upon reset
+        form2.addEventListener("reset", function() {
             this.querySelectorAll(".is-valid, .is-invalid").forEach(field => {
                 field.classList.remove("is-valid", "is-invalid");
             });
-            contactSuccessAlert.classList.add("d-none");
         });
 
+        const form3 = document.querySelector("#form3");
+        const confirmPassword = document.querySelector("#confirm");
+        const password = document.querySelector("#password");
 
-        // ====================================================================
-        // PART 3: ADVANCED REGISTRATION FORM (Task 4)
-        // ====================================================================
-        const regForm = document.getElementById("registration-form");
-        const passwordInput = document.getElementById("password");
-        const confirmPasswordInput = document.getElementById("confirm");
-        const confirmFeedback = document.getElementById("confirm-feedback");
-        const regSuccessAlert = document.getElementById("reg-success-alert");
-        const countrySelect = document.getElementById("country");
-
-        // Helper function to validate password matching
-        function validatePasswordMatch() {
-            if (passwordInput.value.length < 8) {
-                confirmPasswordInput.setCustomValidity("Password must be at least 8 characters");
-                confirmFeedback.textContent = "Password must be at least 8 characters long.";
-            } else if (confirmPasswordInput.value !== passwordInput.value) {
-                confirmPasswordInput.setCustomValidity("Passwords do not match");
-                confirmFeedback.textContent = "Passwords must match and have at least 8 characters.";
-            } else {
-                confirmPasswordInput.setCustomValidity("");
-            }
-        }
-
-        // Live check on password fields
-        passwordInput.addEventListener("input", function() {
-            if (confirmPasswordInput.value.length > 0) {
-                validatePasswordMatch();
-                if (confirmPasswordInput.classList.contains("is-valid") || confirmPasswordInput.classList.contains("is-invalid")) {
-                    const valid = confirmPasswordInput.checkValidity();
-                    confirmPasswordInput.classList.toggle("is-valid", valid);
-                    confirmPasswordInput.classList.toggle("is-invalid", !valid);
-                }
-            }
-        });
-
-        confirmPasswordInput.addEventListener("input", function() {
-            if (this.classList.contains("is-valid") || this.classList.contains("is-invalid") || this.value.length > 0) {
-                validatePasswordMatch();
-                const valid = this.checkValidity();
-                this.classList.toggle("is-valid", valid);
-                this.classList.toggle("is-invalid", !valid);
-            }
-        });
-
-        // Radio buttons live check
-        document.querySelectorAll('input[name="gender"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                const anyChecked = document.querySelector('input[name="gender"]:checked') !== null;
-                document.querySelectorAll('input[name="gender"]').forEach(r => {
-                    r.classList.toggle('is-valid', anyChecked);
-                    r.classList.toggle('is-invalid', !anyChecked);
-                });
-            });
-        });
-
-        // Country select live check
-        countrySelect.addEventListener("change", function() {
-            if (this.classList.contains("is-valid") || this.classList.contains("is-invalid")) {
-                const valid = this.checkValidity();
-                this.classList.toggle("is-valid", valid);
-                this.classList.toggle("is-invalid", !valid);
-            }
-        });
-
-        regForm.addEventListener("submit", function(event) {
+        form3.addEventListener("submit", function(event) {
             event.preventDefault();
 
-            // Verify password match using setCustomValidity
-            validatePasswordMatch();
+            confirmPassword.setCustomValidity(
+                confirmPassword.value === password.value ? "" : "Passwords do not match"
+            );
 
-            // Evaluate all required inputs, selects, and fieldsets
             this.querySelectorAll("[required]").forEach(field => {
                 const valid = field.checkValidity();
                 field.classList.toggle("is-valid", valid);
                 field.classList.toggle("is-invalid", !valid);
             });
-
-            if (this.checkValidity()) {
-                regSuccessAlert.classList.remove("d-none");
-                regSuccessAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            } else {
-                regSuccessAlert.classList.add("d-none");
-            }
         });
 
-        regForm.addEventListener("reset", function() {
-            // Clear custom validation errors
-            confirmPasswordInput.setCustomValidity("");
-
-            // Clear all validation styles
+        form3.addEventListener("reset", function() {
+            confirmPassword.setCustomValidity("");
             this.querySelectorAll(".is-valid, .is-invalid").forEach(field => {
                 field.classList.remove("is-valid", "is-invalid");
             });
-
-            regSuccessAlert.classList.add("d-none");
-        });
-
-        // Automated test helper for screenshots & grading demos (?test=invalid or ?test=valid)
-        window.addEventListener("DOMContentLoaded", function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const testMode = urlParams.get('test');
-            const hash = window.location.hash.toLowerCase();
-
-            if (testMode === 'invalid') {
-                setTimeout(() => {
-                    if (hash === '#part2') {
-                        contactForm.dispatchEvent(new Event('submit'));
-                    } else if (hash === '#part3') {
-                        regForm.dispatchEvent(new Event('submit'));
-                    }
-                }, 50);
-            } else if (testMode === 'valid') {
-                setTimeout(() => {
-                    if (hash === '#part2') {
-                        document.getElementById('contact-name').value = 'John Doe';
-                        document.getElementById('contact-email').value = 'john.doe@example.com';
-                        document.getElementById('contact-message').value = 'Hello! This is a test message to demonstrate valid Bootstrap form styling.';
-                        contactForm.dispatchEvent(new Event('submit'));
-                    } else if (hash === '#part3') {
-                        document.getElementById('first').value = 'Alan';
-                        document.getElementById('last').value = 'Turing';
-                        document.getElementById('reg-email').value = 'alan.turing@example.com';
-                        document.getElementById('password').value = 'SecretP@ss123';
-                        document.getElementById('confirm').value = 'SecretP@ss123';
-                        document.getElementById('male').checked = true;
-                        document.getElementById('coding').checked = true;
-                        document.getElementById('gaming').checked = true;
-                        document.getElementById('country').value = 'KZ';
-                        regForm.dispatchEvent(new Event('submit'));
-                    }
-                }, 50);
-            }
         });
     </script>
+
 </body>
 </html>
